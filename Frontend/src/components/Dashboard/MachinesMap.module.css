@@ -1,0 +1,73 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  flex: 0 0 380px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: right;
+  margin: 0 0 16px;
+}
+
+.map {
+  background: #e8f5e9;
+  border-radius: 10px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pin {
+  position: absolute;
+  top: 55%;
+  left: 44%;
+  font-size: 1.5rem;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendName {
+  font-size: 0.82rem;
+  color: #1a9c5c;
+  flex: 1;
+  text-align: right;
+}
+
+.legendPct {
+  font-size: 0.82rem;
+  color: #555;
+  min-width: 32px;
+}

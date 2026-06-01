@@ -1,0 +1,43 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #444;
+  text-align: right;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  font-size: 0.95rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #1a5c3a;
+  background-color: #fff;
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  color: #999;
+  display: flex;
+  align-items: center;
+}

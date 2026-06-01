@@ -1,0 +1,58 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  flex: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: right;
+  margin: 0 0 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.name {
+  font-size: 0.85rem;
+  color: #1a9c5c;
+}
+
+.val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.barBg {
+  background: #f0f0f0;
+  border-radius: 4px;
+  height: 8px;
+  width: 100%;
+}
+
+.bar {
+  background: #1a5c3a;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}

@@ -1,0 +1,25 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  flex: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.header {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.sub {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0 0 4px;
+}

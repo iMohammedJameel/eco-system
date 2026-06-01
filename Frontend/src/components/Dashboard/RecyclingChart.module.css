@@ -1,0 +1,44 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  flex: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-direction: row-reverse;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+}
+
+.filterBtn {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  font-size: 0.8rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.activeFilter {
+  background: #e8f5e9;
+  border-color: #1a5c3a;
+  color: #1a5c3a;
+  font-weight: 600;
+}

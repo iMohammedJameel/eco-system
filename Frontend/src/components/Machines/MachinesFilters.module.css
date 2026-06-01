@@ -1,0 +1,46 @@
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.searchBox {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 40px 10px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #1a5c3a;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.select {
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 160px;
+}

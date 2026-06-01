@@ -1,0 +1,50 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+.value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
