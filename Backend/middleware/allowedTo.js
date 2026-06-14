@@ -1,10 +1,9 @@
-const appError = require('../utils/appError');
+const appError = require("../utils/appError");
+const { ERROR } = require("../utils/httpStatusText");
 
-module.exports = (...roles) => {
-    return (req, res, next) => {
-        if (!roles.includes(req.currentUser.role)) {
-            return next(appError.create('this role is not authorized', 401));
-        }
-        next();
-    };
+module.exports = (...roles) => (req, res, next) => {
+  if (!roles.includes(req.user.role)) {
+    return next(appError.create("Access denied", 403, ERROR));
+  }
+  next();
 };
