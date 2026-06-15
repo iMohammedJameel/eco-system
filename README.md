@@ -6,7 +6,7 @@
 
 ## 🧩 Project Overview
 
-EcoCycle is part of the **ذكاء التدوير (Smart Recycling Egypt)** initiative — a graduation project under Egypt's **Digilians** program. The system connects IoT-based reverse vending machines with a web admin dashboard and a mobile app to encourage plastic bottle recycling through a reward-based system.
+EcoCycle is part of the **ذكاء التدوير (Smart Recycling Egypt)** initiative — a graduation project under Egypt's **Digilians** initiative. The system connects IoT-based reverse vending machines with a web admin dashboard and a mobile app to encourage plastic bottle recycling through a reward-based system.
 
 This repository contains:
 - **Backend** — RESTful API built with Node.js, Express, and MongoDB
