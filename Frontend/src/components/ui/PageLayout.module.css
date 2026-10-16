@@ -1,0 +1,39 @@
+.layout {
+  min-height: 100vh;
+  /* السايدبار على اليسار (زي الديزاين) رغم RTL */
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rightSide {
+  flex: 1;
+  min-width: 0;
+  /* مسافة للسايدبار الثابت على اليسار */
+  margin-left: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+}
+
+.layout.collapsed .rightSide {
+  margin-left: var(--sidebar-collapsed-w);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max-w);
+  margin: 0 auto;
+  padding: 20px 24px 48px;
+}
+
+@media (max-width: 1024px) {
+  .rightSide {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 14px 14px 40px;
+  }
+}

@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 20px 8px;
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+/* فلاتر — الحبة النشطة بالأخضر الصريح زي الديزاين */
+.filters {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--r-full);
+  background: var(--c-surface-alt);
+}
+
+.filterBtn {
+  padding: 5px 14px;
+  border-radius: var(--r-full);
+  font-size: 0.76rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text-secondary);
+  transition: all var(--t-fast);
+}
+
+.filterBtn:hover {
+  color: var(--c-primary);
+}
+
+.activeFilter {
+  background: var(--c-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(13, 108, 61, 0.3);
+}
+
+/* Tooltip بستايل الديزاين */
+.tooltip {
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 14px;
+  border-radius: var(--r-md);
+  background: #ffffff;
+  border: 1px solid var(--c-border);
+  box-shadow: var(--sh-md);
+}
+
+.tooltipLabel {
+  font-size: 0.72rem;
+  color: var(--c-text-muted);
+}
+
+.tooltipValue {
+  font-size: 0.9rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-primary);
+}
+
+@media (max-width: 640px) {
+  .header { flex-direction: column; align-items: stretch; }
+}

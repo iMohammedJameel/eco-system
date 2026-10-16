@@ -1,0 +1,167 @@
+.wrapper {
+  background: #fff;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-card);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  direction: rtl;
+  text-align: right;
+}
+
+.table thead tr {
+  background: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.table td {
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  color: #333;
+  border-bottom: 1px solid #f0f4f3;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: #f0f4f3;
+}
+
+.machineName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.location {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.statusActive {
+  background: #dcf0dc;
+  color: #0d6c3d;
+}
+
+.statusWarning {
+  background: #f4efe2;
+  color: #a06a10;
+}
+
+.statusOffline {
+  background: #f9e8e6;
+  color: #b3261e;
+}
+
+.fillCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row-reverse;
+}
+
+.barBg {
+  width: 80px;
+  height: 6px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.fillPct {
+  font-size: 0.82rem;
+  color: #555;
+  min-width: 32px;
+}
+
+.dash {
+  color: #bbb;
+}
+
+.lastSend {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.actionBtn {
+  padding: 6px 14px;
+  border: 1px solid #0d6c3d;
+  background: none;
+  color: #0d6c3d;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: #0d6c3d;
+  color: #fff;
+}
+
+.actionsCell {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.editBtn {
+  padding: 5px 12px;
+  border: 1px solid #0d6c3d;
+  background: #fff;
+  color: #0d6c3d;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.editBtn:hover {
+  background: #0d6c3d;
+  color: #fff;
+}
+
+.deleteBtn {
+  padding: 5px 12px;
+  border: 1px solid #b3261e;
+  background: #fff;
+  color: #b3261e;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.deleteBtn:hover {
+  background: #b3261e;
+  color: #fff;
+}

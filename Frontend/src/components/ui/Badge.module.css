@@ -1,0 +1,73 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  vertical-align: middle;
+}
+
+.sm {
+  font-size: var(--fs-xs);
+  padding: 2px 8px;
+}
+
+.md {
+  font-size: var(--fs-sm);
+  padding: 3px 10px;
+}
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Variants */
+.primary {
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  border-color: var(--c-primary-bg);
+}
+
+.success {
+  background: var(--c-success-bg);
+  color: var(--c-success);
+  border-color: var(--c-success-bg);
+}
+
+.warning {
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+  border-color: var(--c-warning-bg);
+}
+
+.danger {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+  border-color: var(--c-danger-bg);
+}
+
+.info {
+  background: var(--c-info-bg);
+  color: var(--c-info);
+  border-color: var(--c-info-bg);
+}
+
+.neutral {
+  background: var(--c-surface-hover);
+  color: var(--c-text-secondary);
+  border-color: var(--c-divider);
+}

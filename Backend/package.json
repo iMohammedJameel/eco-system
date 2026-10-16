@@ -1,0 +1,45 @@
+{
+  "name": "ecocycle-backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seed.js",
+    "test": "node --test",
+    "validate:seed": "node scripts/validateSeed.js",
+    "smoke": "node scripts/liveSmoke.js"
+  },
+  "keywords": [
+    "ecocycle",
+    "recycling",
+    "sustainability",
+    "egypt",
+    "express",
+    "mongoose",
+    "react"
+  ],
+  "author": "Mohammed Jameel Fouad",
+  "license": "MIT",
+  "description": "EcoCycle — Smart Waste Recycling Platform (Backend API)",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.3.0",
+    "joi": "^18.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.2",
+    "morgan": "^1.11.0",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "supertest": "^7.3.1"
+  }
+}

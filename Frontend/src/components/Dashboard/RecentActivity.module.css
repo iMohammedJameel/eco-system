@@ -1,0 +1,91 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px 20px;
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+}
+
+.viewAll {
+  font-size: 0.72rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-primary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 6px;
+  border-radius: var(--r-md);
+  transition: background var(--t-fast);
+}
+
+.item:hover {
+  background: var(--c-primary-bg-soft);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-md);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.actTitle {
+  font-size: 0.82rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actDesc {
+  font-size: 0.7rem;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chev {
+  color: var(--c-text-disabled);
+  flex-shrink: 0;
+}
+
+.empty {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+}

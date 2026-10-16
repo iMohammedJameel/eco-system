@@ -1,0 +1,76 @@
+/* StatsCard — زي الديزاين: بلا إطار + ظل همس، شريحة أيقونة نعناعية يسار، label يمين، رقم كبير، حبة اتجاه */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 122px;
+  padding: 16px 18px;
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* الشريحة النعناعية — يسار (زي الديزاين) */
+.icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-md);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text-secondary);
+  text-align: right;
+}
+
+.value {
+  margin-top: 10px;
+  font-size: 1.55rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--c-text);
+  text-align: right;
+  letter-spacing: -0.01em;
+  direction: ltr;
+}
+
+/* حبة الاتجاه — أسفل يسار (زي الديزاين) */
+.trend {
+  position: absolute;
+  bottom: 14px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  font-size: 0.68rem;
+  font-weight: var(--fw-bold);
+}
+
+.trendDown {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+}

@@ -1,0 +1,32 @@
+.card {
+  background: #fff;
+  border-radius: var(--r-xl);
+  padding: 24px;
+  flex: 1;
+  box-shadow: var(--sh-card);
+}
+
+.header {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.sub {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0 0 4px;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 60px 0;
+  font-size: 0.9rem;
+}
