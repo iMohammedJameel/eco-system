@@ -1,0 +1,215 @@
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  /* إيقاع 18px الموحّد — قبل كده شريط البحث كان ملاصق للجدول (فرق 0px) */
+  margin: 18px 0;
+}
+
+.searchBox {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  background: var(--c-surface);
+  border-radius: 12px;
+  box-shadow: var(--sh-card);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 13px 16px;
+  padding-inline-start: 44px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: 16px;
+  color: #aaa;
+}
+
+.select {
+  padding: 13px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: var(--c-surface);
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 140px;
+  font-family: inherit;
+}
+
+.select:focus { border-color: #0d6c3d; }
+
+.tableWrap {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-card);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  text-align: start;
+  min-width: 900px;
+}
+
+.table thead tr {
+  background: var(--c-surface-alt);
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  white-space: nowrap;
+  /* مطابقة محاذاة الخلايا — المتصفح بيمركز th افتراضيًا فكان العنوان مش واقف على محتوى عموده */
+  text-align: start;
+}
+
+.table td {
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: #333;
+  border-bottom: 1px solid #f0f4f3;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--c-surface-alt); }
+
+.typeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.typeDeposit {
+  background: var(--c-primary-bg);
+  color: #0d6c3d;
+}
+
+.typeWithdraw {
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0d6c3d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: #999;
+  text-align: start;
+}
+
+.machineCell {
+  /* اسم الماكينة سطر واحد دايمًا — الأسماء الطويلة (زي «سيتي ستارز هليوبوليس»)
+     كانت بتلف لـ 3-4 سطور فترفع الصف لـ 107px بدل 66px وتبوّظ اتساق الجدول.
+     الاسم الكامل متاح في tooltip (title) عند الـ hover. */
+  max-width: 175px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.amount {
+  font-weight: 700;
+  color: #0d6c3d;
+}
+
+.date {
+  color: #888;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+/* ═══ فلتر وبادج المشتبهة (كشف الاحتيال) ═══ */
+.suspiciousToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--c-border-strong);
+  background: var(--c-surface);
+  font-size: 0.78rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text-secondary);
+  transition: all var(--t-fast);
+}
+
+.suspiciousToggle:hover {
+  border-color: var(--c-warning);
+  color: var(--c-warning);
+}
+
+.suspiciousActive {
+  background: var(--c-warning-bg);
+  border-color: var(--c-warning);
+  color: var(--c-warning);
+}
+
+.suspiciousBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 2px 9px;
+  border-radius: var(--r-full);
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+  font-size: 0.62rem;
+  font-weight: var(--fw-bold);
+}
+
+.typeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}

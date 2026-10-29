@@ -1,0 +1,377 @@
+/* Deposit PWA — صفحة الإيداع العامة من الموبايل (بعد مسح QR) */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px 16px;
+  background: linear-gradient(165deg, #074e29 0%, #033722 60%, #021d12 100%);
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  overflow: hidden;
+}
+
+.bgLeaf {
+  position: absolute;
+  bottom: -60px;
+  left: -50px;
+  width: 340px;
+  height: 340px;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+/* زر تبديل اللغة — أعلى الصفحة */
+.langBtn {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 18px;
+  z-index: 5;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.langBtn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.card {
+  position: relative;
+  width: min(460px, 100%);
+  background: var(--c-surface);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  animation: cardIn 320ms cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ═══ البراند ═══ */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.logoMark { width: 48px; height: 48px; }
+
+.brandName {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0d6c3d;
+}
+
+.brandName span { color: #79c032; }
+
+.brandSub {
+  font-size: 0.68rem;
+  color: #7a8a80;
+}
+
+/* ═══ مراحل ═══ */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 4px solid #dcf0dc;
+  border-top-color: #0d6c3d;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.errorIcon { font-size: 2.4rem; }
+
+.errorText {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #b3261e;
+}
+
+.hint {
+  font-size: 0.72rem;
+  color: #8a9990;
+  line-height: 1.6;
+}
+
+/* ═══ الماكينة ═══ */
+.machineBox {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--c-primary-bg-soft);
+  border: 1px solid #dcf0dc;
+  margin-bottom: 18px;
+}
+
+.machineLabel {
+  font-size: 0.66rem;
+  color: #5f9d78;
+  font-weight: 700;
+}
+
+.machineName {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #123527;
+}
+
+.machineLoc {
+  font-size: 0.72rem;
+  color: #7a8a80;
+}
+
+/* ═══ النموذج ═══ */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field > span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3c5a4a;
+}
+
+.field small {
+  font-size: 0.64rem;
+  color: #8a9990;
+  line-height: 1.5;
+}
+
+.field input {
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 13px;
+  border: 1.5px solid #c9d8cd;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #123527;
+  background: #fbfdfb;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #0d6c3d;
+  box-shadow: 0 0 0 3px rgba(13, 108, 61, 0.15);
+}
+
+.field input::placeholder { color: #b3c1b8; }
+
+/* الخامات */
+.materialGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.materialCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 11px 4px 9px;
+  border-radius: 13px;
+  border: 1.5px solid #dcebe0;
+  background: #fbfdfb;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #3c5a4a;
+  transition: all 150ms;
+}
+
+.materialCard small {
+  font-size: 0.6rem;
+  color: #8a9990;
+  font-weight: 600;
+}
+
+.materialCard:hover { border-color: #5f9d78; }
+
+.materialActive {
+  border-color: #0d6c3d;
+  background: var(--c-primary-bg-soft);
+  box-shadow: 0 3px 10px rgba(13, 108, 61, 0.18);
+}
+
+.materialEmoji { font-size: 1.2rem; }
+
+/* الوزن */
+.weightRow {
+  display: flex;
+  gap: 8px;
+}
+
+.weightBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  border: 1.5px solid #c9d8cd;
+  background: #fbfdfb;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0d6c3d;
+}
+
+.weightBtn:hover { background: var(--c-primary-bg-soft); }
+
+.weightRow input {
+  flex: 1;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* التقدير */
+.estimate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  border-radius: 13px;
+  background: linear-gradient(90deg, #0d6c3d, #074e29);
+  color: #fff;
+}
+
+.estimate span {
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.estimate strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  direction: ltr;
+}
+
+.submitBtn {
+  height: 52px;
+  border-radius: 13px;
+  background: linear-gradient(90deg, #166d37, #0d6c3d);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(13, 108, 61, 0.4);
+  transition: transform 150ms, box-shadow 150ms;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(13, 108, 61, 0.5);
+}
+
+.submitBtn:disabled { opacity: 0.6; }
+
+/* ═══ النجاح ═══ */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 12px 0 4px;
+}
+
+.successIcon { font-size: 3rem; }
+
+.success h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0d6c3d;
+}
+
+.successAmount {
+  font-size: 0.95rem;
+  color: #3c5a4a;
+}
+
+.successAmount strong {
+  color: #0d6c3d;
+  font-size: 1.1rem;
+}
+
+.successUser {
+  font-size: 0.8rem;
+  color: #5f9d78;
+  font-weight: 700;
+}
+
+.achievements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.achTitle { font-size: 0.74rem; font-weight: 700; width: 100%; }
+
+.achChip {
+  padding: 4px 14px;
+  border: 1.5px solid #5f9d78;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #0d6c3d;
+  background: var(--c-primary-bg-soft);
+}
+
+.suspiciousNote {
+  font-size: 0.66rem;
+  color: #a06a10;
+  background: #f4efe2;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.machineMini {
+  font-size: 0.7rem;
+  color: #8a9990;
+  padding: 8px 14px;
+  background: var(--c-surface-alt);
+  border-radius: 999px;
+}
+
+.footer {
+  color: rgba(220, 240, 220, 0.65);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+@media (max-width: 420px) {
+  .materialGrid { grid-template-columns: repeat(2, 1fr); }
+}

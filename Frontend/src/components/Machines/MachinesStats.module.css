@@ -1,0 +1,51 @@
+/* مسافة تنفّس 18px فوق وتحت — قبل كده الكاردات كانت ملاصقة في الهيدر
+   والفلاتر (فرق 0px مُقاس) زي ما المستخدم لاحظ "متلاصقين بالحاجات اللي
+   فوقهم وتحتهم"؛ ده نفس إيقاع الداشبورد (gap: 18px) */
+.row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+
+.card {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: 20px;
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--sh-card);
+}
+
+/* توحيد نمط بطاقات الإحصائيات مع StatsCard الداشبورد:
+   النص في بداية القراءة والأيقونة في نهايتها (عربي: نص يمين وأيقونة شمال) */
+
+.right {
+  text-align: start;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 4px 0 0;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}

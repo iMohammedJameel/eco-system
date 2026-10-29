@@ -1,0 +1,298 @@
+/* Navbar — مطابق للديزاين: أبيض 76px، بحث pill #f0f4f3 بدون إطار، منطقة مستخدم بفواصل، watermark ورقي */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  height: var(--navbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--c-divider);
+  z-index: var(--z-navbar);
+  overflow: visible;
+}
+
+.watermark {
+  position: absolute;
+  left: 34%;
+  bottom: -14px;
+  width: 520px;
+  height: 90px;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* ═══ يمين: أزرار القائمة + البحث ═══ */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.iconBtn {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-md);
+  color: var(--c-text-secondary);
+  transition: all var(--t-fast);
+}
+
+.iconBtn:hover {
+  background: var(--c-surface-alt);
+  color: var(--c-primary);
+}
+
+/* تبديل اللغة — عربي/إنجليزي */
+.langBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: var(--r-full);
+  background: var(--c-primary-bg-soft);
+  color: var(--c-primary-dark);
+  font-size: 0.78rem;
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  transition: all var(--t-fast);
+}
+
+.langBtn:hover {
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+}
+
+.langBtn:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+}
+
+.langIcon { flex-shrink: 0; }
+.langLabel { line-height: 1; }
+
+.desktopOnly { display: grid; }
+.mobileOnly { display: grid; } /* زر درج الموبايل — يختفي على الديسكتوب حيث السايدبار ثابت دايمًا */
+
+/* حبة البحث — زي الديزاين */
+.searchPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  width: min(440px, 34vw);
+  padding: 0 16px;
+  border-radius: var(--r-full);
+  background: var(--c-surface-alt); /* #f0f4f3 بدون إطار */
+  color: var(--c-text-muted);
+  transition: box-shadow var(--t-fast), background var(--t-fast);
+}
+
+.searchPill:hover {
+  background: var(--c-surface-hover);
+}
+
+.searchPill:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+}
+
+.searchIcon { color: var(--c-text-muted); flex-shrink: 0; }
+
+.searchPlaceholder {
+  flex: 1;
+  text-align: start;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  padding: 2px 7px;
+  border-radius: var(--r-sm);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-muted);
+  flex-shrink: 0;
+}
+
+/* ═══ يسار: العنوان + منطقة المستخدم ═══ */
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.titleSection { text-align: start; }
+
+.title {
+  font-size: 1.02rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+  line-height: 1.25;
+}
+
+.subtitle {
+  font-size: 0.72rem;
+  color: var(--c-text-muted);
+  line-height: 1.3;
+}
+
+/* منطقة المستخدم — chevron | avatar | divider | name/role | divider | bell (زي الديزاين) */
+.userZone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatarBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--r-full);
+  padding: 2px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-full);
+  background: var(--c-primary-bg);
+  color: var(--c-primary-dark);
+}
+
+.chevron { color: var(--c-text-muted); }
+
+.divider {
+  width: 1px;
+  height: 26px;
+  background: var(--c-border);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.userName {
+  font-size: 0.86rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+  white-space: nowrap;
+}
+
+.userRole {
+  font-size: 0.7rem;
+  color: var(--c-text-muted);
+}
+
+/* قائمة الأفاتار — ترتكز على الحافة المنطقية فتنفتح للداخل في الاتجاهين */
+.userMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  inset-inline-end: 0;
+  min-width: 210px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+  padding: 6px;
+  z-index: var(--z-dropdown);
+  animation: ecFadeInDown var(--t-fast) both;
+}
+
+.userMenuHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--c-divider);
+  margin-bottom: 6px;
+}
+
+.userMenuName {
+  font-size: 0.88rem;
+  font-weight: var(--fw-bold);
+}
+
+.userMenuRole {
+  font-size: 0.7rem;
+  color: var(--c-text-muted);
+}
+
+.userMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: var(--r-md);
+  font-size: 0.85rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-text-secondary);
+  transition: all var(--t-fast);
+}
+
+.userMenuItem:hover {
+  background: var(--c-primary-bg-soft);
+  color: var(--c-primary-dark);
+}
+
+.logoutItem { color: var(--c-danger); }
+.logoutItem:hover {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+}
+
+.userMenuDivider {
+  height: 1px;
+  background: var(--c-divider);
+  margin: 6px 8px;
+}
+
+/* ═══ ريسبونسف ═══ */
+@media (min-width: 1025px) {
+  .mobileOnly { display: none; }
+}
+
+@media (max-width: 1024px) {
+  /* زر الطي بيتقص لما السايدبار يبقى درج — الطي ملوش معنى هناك */
+  .desktopOnly { display: none; }
+}
+
+@media (max-width: 1100px) {
+  .searchPill { width: 280px; }
+  .watermark { display: none; }
+}
+
+@media (max-width: 900px) {
+  .searchPlaceholder { display: none; }
+  .searchPill { width: 44px; padding: 0; justify-content: center; }
+  .kbd { display: none; }
+  .titleSection { display: none; }
+  .userInfo { display: none; }
+  .divider { display: none; }
+  .langLabel { display: none; }
+  .langBtn { padding: 0; width: 34px; justify-content: center; }
+}
+
+@media (max-width: 640px) {
+  .navbar { padding: 0 14px; }
+  .desktopOnly { display: none; }
+}

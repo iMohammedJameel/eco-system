@@ -1,0 +1,261 @@
+/* Sidebar — مطابق للديزاين: 272px، تدرج #074e29→#033722، حبة نشطة #0d6c3d بزاوية يمنى 46px، تباعد 53px */
+
+.sidebar {
+  position: fixed;
+  left: 0;          /* يسار فعلي (زي الديزاين) بغض النظر عن اتجاه RTL */
+  top: 0;
+  bottom: 0;
+  width: var(--sidebar-w);
+  /* ⭐ طلب صريح من العميل: النصوص جوه السايدبار تبقى من الشمال لليمين حتى لو
+     اللغة عربي — لأن البانل مثبّت شمال فيزيائيًا في اللغتين (زي الديزاين)،
+     فترصيف المحتوى من الشمال هو المتسق مع حافة التثبيت.
+     قبل كده كان بيرث rtl من <html> فالأيقونات بتطلع يمين والنصوص بتتراص من
+     اليمين جوه بانل متعلق شمال — شكل متنافر (طلب: LTR مش العكس).
+     الكلمات العربية نفسها بتتعرض سليمة (Unicode bidi) بس مرتكزة من الشمال. */
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--sidebar-bg-from) 0%, var(--sidebar-bg-to) 100%);
+  z-index: var(--z-sidebar);
+  overflow: hidden;
+  transition: width var(--t-normal);
+}
+
+.collapsed {
+  width: var(--sidebar-collapsed-w);
+}
+
+.overlay {
+  display: none;
+}
+
+/* ═══ الشعار ═══ */
+.brand {
+  position: relative;
+  padding: 22px 18px 6px;
+}
+
+.collapseBtn {
+  position: absolute;
+  top: 14px;
+  /* السايدبار مثبّت شمال فعليًا (زي الديزاين) في اللغتين —
+     فزر الطي يفضل دايمًا على الحافة الملاصقة للمحتوى (يمين فعلي).
+     inset-inline-end كانت بتقلبه ل حافة الشاشة في العربي (RTL) — باج مُقاس:
+     LTR: left 236-260 ✓ / RTL: left 12-36 ✗ */
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-full);
+  color: rgba(255, 255, 255, 0.55);
+  transition: all var(--t-fast);
+}
+
+.collapseBtn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logoMark {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-size: 1.45rem;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.logoEco { color: #ffffff; }
+.logoCycle { color: var(--c-primary-lime); }
+
+.logoSubtitle {
+  margin-top: 7px;
+  font-size: 0.78rem;
+  font-weight: var(--fw-medium);
+  color: rgba(207, 224, 212, 0.85);
+  white-space: nowrap;
+}
+
+.collapsed .brand {
+  padding: 36px 0 6px; /* مساحة فوق اللوجو لزر الطي المتوسّط */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collapsed .logoRow { flex-direction: column; gap: 6px; }
+.collapsed .logoMark { width: 40px; height: 40px; }
+/* زر الطي متوسّط فوق اللوجو — بدل زاوية الحافة اللي كانت بتتداخل مع اللوجو (12px تراكب) */
+.collapsed .collapseBtn {
+  top: 8px;
+  /* توسيط فيزيائي — السايدبار 72px فيcenter الزر عند 24-48 في اللغتين */
+  right: 50%;
+  margin-right: -12px; /* نصف عرض الزر */
+}
+
+/* ═══ التنقل ═══ */
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 6px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;               /* ارتفاع الحبة زي الديزاين */
+  margin: 3.5px 18px;         /* الحبة تمتد x18→255 زي الديزاين */
+  padding: 0 14px;
+  border-radius: var(--r-md);
+  color: var(--sidebar-text);
+  font-size: 0.92rem;
+  font-weight: var(--fw-medium);
+  transition: all var(--t-fast);
+}
+
+.navItem:hover {
+  color: var(--sidebar-text-active);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* الحبة النشطة — اللون الصريح من الديزاين.
+   مع ترصيف LTR (الأيقونة شمال) بقا الطرف القائد هو الشمال،
+   فالتكبير 46px على الزاويتين الشماليتين (شكل «تاب» زي الديزاين). */
+.navItem.active {
+  background: var(--sidebar-pill);
+  color: var(--sidebar-text-active);
+  font-weight: var(--fw-bold);
+  border-start-start-radius: 46px;
+  border-end-start-radius: 46px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.navIcon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.navLabel {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left; /* ترصيف من الشمال في اللغتين — متسق مع direction: ltr للبانل */
+}
+
+/* الحالة المطوية: الأيقونة في المنتصف بدون هوامش أفقية كبيرة */
+.collapsed .navItem {
+  margin: 3.5px 12px;
+  justify-content: center;
+  padding: 0;
+}
+
+/* ═══ رسمة المدينة + الشعار ═══ */
+.bottomArt {
+  position: relative;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.cityImg {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  object-position: bottom;
+  opacity: 0.9;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 100%);
+}
+
+/* LTR (English): نخفي أسفل الرسمة (~12%) لأن فيها نصًا عربيًا مخبوزًا من الرسمة الأصلية */
+:global([dir='ltr']) .cityImg {
+  mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 84%, transparent 94%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 84%, transparent 94%);
+}
+
+/* الوضع الداكن: تعتيم الرسمة وتحويلها لعائلة الخلفية الداكنة —
+   بدون الفلتر الرسمة الفاتحة (مرسومة للتدرج #074e29) بتظهر كبقعة
+   مستطيلة صارخة فوق التدرج الداكن #062816 وكأنها صورة ملصقة. */
+:global([data-theme='dark']) .cityImg {
+  filter: brightness(0.5) saturate(0.75) hue-rotate(-6deg);
+  opacity: 0.82;
+}
+
+/* الوضع الداكن: الشعار النصي تحت الرسمة يخفت قليلًا ليتناسق */
+:global([data-theme='dark']) .slogan {
+  color: #cfe0d4;
+}
+
+.slogan {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  font-weight: var(--fw-semibold);
+  color: #e9f4ec;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.collapsed .bottomArt { padding-bottom: 14px; }
+.collapsed .cityImg { max-height: 90px; }
+.collapsed .slogan { display: none; }
+
+/* ═══ موبايل: درج منزلق ═══
+   LTR: من اليسار (زي زر الهامبرجر اللي على اليسار)
+   RTL: من اليمين — عشان يبقى ملاصق لزر الهامبرجر اللي على أقصى اليمين
+   (قبل كده كان الدرج بينزلق من الشمال والزر على اليمين — تناقض UX مُقاس:
+   burgerAR left:323-361 لكن drawer left:0-272) */
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-105%);
+    transition: transform var(--t-normal);
+    width: var(--sidebar-w) !important;
+  }
+
+  .sidebar.mobileOpen {
+    transform: translateX(0);
+    box-shadow: var(--sh-xl);
+  }
+
+  /* العربي: الدرج على اليمين وينزلق من اليمين */
+  :global([dir='rtl']) .sidebar {
+    left: auto;
+    right: 0;
+    transform: translateX(105%);
+  }
+
+  :global([dir='rtl']) .sidebar.mobileOpen {
+    transform: translateX(0);
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 55, 34, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: calc(var(--z-sidebar) - 1);
+  }
+
+  .collapseBtn { display: none; }
+}

@@ -1,0 +1,168 @@
+.wrapper {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-card);
+  /* سكرول أفقي للجدول العريض على الموبايل — قبل كده كان hidden فكان بيقص الأعمدة ديالًا
+     (جدول 913px على شاشة 375px — آخر 4 أعمدة مشوفيش أبدًا). نفس نمط Transactions */
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  text-align: start;
+}
+
+.table thead tr {
+  background: var(--c-surface-alt);
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  /* مطابقة محاذاة الخلايا — المتصفح بيمركز th افتراضيًا فكان العنوان مش واقف على محتوى عموده */
+  text-align: start;
+}
+
+.table td {
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  color: #333;
+  border-bottom: 1px solid #f0f4f3;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--c-surface-alt);
+}
+
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #0d6c3d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.phone {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.balance {
+  color: #1a9c5c;
+  font-weight: 600;
+}
+
+.date {
+  color: #1a9c5c;
+  font-size: 0.85rem;
+}
+
+.level {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.levelActive {
+  background: var(--c-primary-bg);
+  color: #0d6c3d;
+}
+
+.levelGold {
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+}
+
+.levelGray {
+  background: var(--c-surface-alt);
+  color: #777;
+}
+
+.statusActive {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--c-primary-bg);
+  color: #0d6c3d;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.statusSuspended {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.email {
+  color: #555;
+  font-size: 0.82rem;
+  direction: ltr;
+  text-align: start;
+}
+
+.actionsCell {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.editBtn {
+  padding: 5px 12px;
+  border: 1px solid #0d6c3d;
+  background: var(--c-surface);
+  color: #0d6c3d;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.editBtn:hover {
+  background: #0d6c3d;
+  color: #fff;
+}
+
+.deleteBtn {
+  padding: 5px 12px;
+  border: 1px solid #b3261e;
+  background: var(--c-surface);
+  color: var(--c-danger);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.deleteBtn:hover {
+  background: #b3261e;
+  color: #fff;
+}

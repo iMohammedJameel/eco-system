@@ -1,0 +1,117 @@
+/* سجل معاملاتي */
+
+.filters {
+  display: flex;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: var(--r-full);
+  border: 1px solid var(--c-border-strong);
+  background: var(--c-surface);
+  color: var(--c-text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  transition: all var(--t-fast);
+}
+
+.filterBtn:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+}
+
+.activeFilter {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: var(--c-text-on-primary);
+}
+
+.activeFilter:hover {
+  color: var(--c-text-on-primary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  animation: ecFadeInUp var(--t-normal) both;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp-4) var(--sp-5);
+  transition: box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+.row:hover {
+  box-shadow: var(--sh-card);
+  transform: translateY(-1px);
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+  min-width: 86px;
+  justify-content: center;
+}
+
+.badgeIn {
+  background: var(--c-success-bg);
+  color: var(--c-success);
+}
+
+.badgeOut {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.primary {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+}
+
+.secondary {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+  margin-top: 2px;
+}
+
+.amount {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.amtIn { color: var(--c-success); }
+.amtOut { color: var(--c-danger); }
+
+@media (max-width: 640px) {
+  .row {
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+  }
+  .info { width: 100%; order: 3; }
+}

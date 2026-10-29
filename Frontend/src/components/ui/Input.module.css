@@ -1,0 +1,97 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.88rem;
+  color: #444;
+  text-align: start;
+  font-weight: 500;
+}
+
+.required {
+  color: var(--c-danger);
+  margin-inline-start: 4px; /* فجوة بين النص والنجمة في بداية القراءة للاتجاهين */
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  background-color: #f9fafb;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 18px;
+  padding-inline-end: 38px; /* مساحة السهم في نهاية القراءة: شمال في العربي (زي الأصلي) */
+  cursor: pointer;
+}
+
+/* الإنجليزي (LTR): السهم جهة اليمين بدل الشمال */
+:global([dir='ltr']) .select {
+  background-position: right 12px center;
+}
+
+.textarea {
+  padding: 12px 14px;
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}
+
+.input {
+  padding-inline-start: 40px; /* مساحة الأيقونة في بداية القراءة */
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: #0d6c3d;
+  background-color: var(--c-surface);
+  box-shadow: 0 0 0 3px rgba(26, 92, 58, 0.08);
+}
+
+.input:disabled, .select:disabled, .textarea:disabled {
+  background-color: #ecf2ed;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.icon {
+  position: absolute;
+  inset-inline-start: 12px; /* بداية القراءة: يمين في العربي، شمال في الإنجليزي */
+  color: #999;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hasError .input,
+.hasError .select,
+.hasError .textarea {
+  border-color: var(--c-danger);
+}
+
+.error {
+  font-size: 0.78rem;
+  color: var(--c-danger);
+  text-align: start;
+}

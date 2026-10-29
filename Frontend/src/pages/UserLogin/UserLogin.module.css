@@ -1,0 +1,214 @@
+/* نمط موحد لصفحات دخول المواطن/الشريك — نفس هوية EcoCycle بدون سايدبار */
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--c-bg);
+  padding: var(--sp-6);
+}
+
+.card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-2xl);
+  box-shadow: var(--sh-card);
+  padding: var(--sp-10) var(--sp-8);
+  width: 100%;
+  max-width: 420px;
+  animation: ecFadeInUp var(--t-normal) both;
+}
+
+/* ═══ الشعار ═══ */
+.brand {
+  text-align: center;
+  margin-bottom: var(--sp-8);
+}
+
+.logo {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-xl);
+  background: linear-gradient(180deg, var(--c-primary), var(--c-primary-deep));
+  color: #fff;
+  box-shadow: var(--sh-md);
+  margin-bottom: var(--sp-4);
+}
+
+.brandTitle {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--c-primary-dark);
+}
+
+.brandTitle span {
+  color: var(--c-primary);
+}
+
+.brandSub {
+  margin-top: var(--sp-2);
+  color: var(--c-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+/* ═══ النموذج ═══ */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  inset-inline-start: var(--sp-4);
+  color: var(--c-text-muted);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-10);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-lg);
+  background: var(--c-surface-alt);
+  color: var(--c-text);
+  font-size: var(--fs-base);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--c-primary);
+  box-shadow: var(--sh-focus);
+}
+
+.eyeBtn {
+  position: absolute;
+  inset-inline-end: var(--sp-3);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-sm);
+  color: var(--c-text-muted);
+}
+
+.eyeBtn:hover {
+  color: var(--c-primary);
+  background: var(--c-surface-hover);
+}
+
+.rememberRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-text-secondary);
+  cursor: pointer;
+}
+
+.rememberRow input {
+  accent-color: var(--c-primary);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* ═══ الخطأ ═══ */
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+  border-radius: var(--r-md);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-sm);
+}
+
+/* ═══ زر الدخول ═══ */
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-4);
+  border-radius: var(--r-lg);
+  background: var(--c-primary);
+  color: var(--c-text-on-primary);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--c-primary-hover);
+  transform: translateY(-1px);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 17px;
+  height: 17px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: ecPulse 1s linear infinite;
+}
+
+/* ═══ روابط أسفل الكارت ═══ */
+.links {
+  margin-top: var(--sp-6);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--c-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.links a {
+  color: var(--c-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.otherPortals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  color: var(--c-text-muted);
+}
+
+.dot {
+  color: var(--c-text-muted);
+}

@@ -1,0 +1,32 @@
+/* ═══ لوحة النجاح المشتركة (تسجيل ناجح / تغيير كلمة المرور ناجح) ═══ */
+
+.successBox {
+  text-align: center;
+  padding: 14px 4px 6px;
+}
+.successIcon {
+  color: #166d37;
+  margin-bottom: 10px;
+}
+.successTitle {
+  font-size: 21px;
+  font-weight: 800;
+  color: #14332f;
+  margin: 0 0 10px;
+}
+.successText {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #40564f;
+  margin: 0 0 20px;
+  background: #f2f7f1;
+  border: 1px solid #d7e8d4;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+@media (max-width: 520px) {
+  .successTitle {
+    font-size: 19px;
+  }
+}

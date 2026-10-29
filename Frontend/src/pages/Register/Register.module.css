@@ -1,0 +1,39 @@
+/* ═══ صفحة إنشاء الحساب — قواعد خاصة بالصفحة فقط ═══
+   الهيكل (page/bg/card/brand) والحقول والزر ولوحة النجاح
+   انتقلت إلى المكوّنات المشتركة components/auth/. */
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #14332f;
+  margin: 0 0 4px;
+}
+.subtitle {
+  font-size: 13.5px;
+  color: #5c7570;
+  margin: 0 0 20px;
+  line-height: 1.7;
+}
+
+/* ── روابط ── */
+.switchLine {
+  text-align: center;
+  margin: 18px 0 0;
+  font-size: 13.5px;
+  color: #5c7570;
+}
+.switchLink {
+  color: #166d37;
+  font-weight: 800;
+  text-decoration: none;
+}
+.switchLink:hover {
+  text-decoration: underline;
+}
+
+/* ── موبايل ── */
+@media (max-width: 520px) {
+  .title {
+    font-size: 18px;
+  }
+}

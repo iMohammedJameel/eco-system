@@ -1,0 +1,72 @@
+.container {
+  position: fixed;
+  top: 80px;
+  right: 24px; /* يمين فيزيائي في اللغتين — بعيد عن السايدبار الثابت شمال */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 280px;
+  max-width: 420px;
+  background: var(--c-surface);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #333;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  border-inline-start: 4px solid #888; /* حافة بداية القراءة: يمين عربي / شمال إنجليزي */
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); } /* ينزلق من اليمين — مكانه الجديد */
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.success { border-inline-start-color: #0d6c3d; }
+.error   { border-inline-start-color: var(--c-danger); }
+.warning { border-inline-start-color: var(--c-warning); }
+.info    { border-inline-start-color: #0d6c3d; }
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.success .icon { background: #0d6c3d; }
+.error   .icon { background: #b3261e; }
+.warning .icon { background: #a06a10; }
+.info    .icon { background: #0d6c3d; }
+
+.message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.close:hover { color: #333; }

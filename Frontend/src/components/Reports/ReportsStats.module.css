@@ -1,0 +1,68 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  /* إيقاع 18px الموحّد — قبل كده كروت الإحصائيات كانت ملاصقة
+     لصف الرسوم البيانية اللي تحتها (فرق 0px مُقاس) */
+  margin: 18px 0;
+}
+
+.card {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: 20px;
+  text-align: start;
+  box-shadow: var(--sh-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* توحيد نمط بطاقات الإحصائيات مع StatsCard الداشبورد (نص في البداية وأيقونة في النهاية) */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.badge {
+  font-size: 0.75rem;
+  background: var(--c-primary-bg);
+  color: #5f9d78;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 4px 0 2px;
+}
+
+.sub {
+  font-size: 0.78rem;
+  color: #aaa;
+  margin: 0;
+}

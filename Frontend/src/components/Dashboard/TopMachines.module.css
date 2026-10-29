@@ -1,0 +1,82 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 20px;
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+}
+
+.unit {
+  font-size: 0.7rem;
+  color: var(--c-text-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.name {
+  font-size: 0.82rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.val {
+  font-size: 0.8rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-primary);
+  direction: ltr;
+}
+
+.barBg {
+  height: 9px;
+  border-radius: var(--r-full);
+  background: var(--c-surface-alt);
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: var(--r-full);
+  background: linear-gradient(90deg, #5f9d78, #a9c7b6);
+  transition: width var(--t-slow);
+}
+
+.empty {
+  padding: 18px 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+}

@@ -1,0 +1,129 @@
+/* بروفايلي */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--sp-5);
+  animation: ecFadeInUp var(--t-normal) both;
+}
+
+.panel {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.panelIcon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-md);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+}
+
+.panelHead h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+/* صف القراءة فقط */
+.readonlyRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+  background: var(--c-surface-alt);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+}
+
+.roLabel {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+  margin-bottom: var(--sp-1);
+}
+
+.roValue {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+  word-break: break-all;
+}
+
+/* الحقول */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+}
+
+.input {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-lg);
+  background: var(--c-surface-alt);
+  color: var(--c-text);
+  font-size: var(--fs-base);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--c-primary);
+  box-shadow: var(--sh-focus);
+}
+
+.hint {
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+/* زر الحفظ */
+.saveBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: var(--r-lg);
+  background: var(--c-primary);
+  color: var(--c-text-on-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  align-self: flex-start;
+  transition: background var(--t-fast);
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: var(--c-primary-hover);
+}
+
+.saveBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .readonlyRow { grid-template-columns: 1fr; }
+}

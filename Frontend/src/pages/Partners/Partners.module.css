@@ -1,0 +1,312 @@
+.filterRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  /* إيقاع 18px الموحّد — قبل كده شريط البحث كان ملاصق للكاردات (فرق 0px) */
+  margin: 18px 0;
+}
+
+.searchBox {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  background: var(--c-surface);
+  border-radius: 12px;
+  box-shadow: var(--sh-card);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 13px 16px;
+  padding-inline-start: 44px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: 16px;
+  color: #aaa;
+}
+
+.select {
+  padding: 13px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: var(--c-surface);
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 160px;
+  font-family: inherit;
+}
+
+.select:focus { border-color: #0d6c3d; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: 20px;
+  box-shadow: var(--sh-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoBox {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--c-primary-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.cardHeadText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category {
+  font-size: 0.78rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.statusChip {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.active { background: var(--c-primary-bg); color: #0d6c3d; }
+.inactive { background: var(--c-surface-alt); color: #888; }
+
+.metaList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #666;
+  justify-content: flex-start;
+}
+
+.metaRow > span:first-child {
+  font-size: 0.9rem;
+  width: 18px;
+  text-align: center;
+}
+
+.offersBox {
+  background: var(--c-surface-alt);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offersTitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #555;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.offer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.offerBadge {
+  background: #0d6c3d;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.offerTitle {
+  font-size: 0.82rem;
+  color: #333;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.moreOffers {
+  font-size: 0.78rem;
+  color: #888;
+  margin: 0;
+  text-align: start;
+}
+
+.cardActions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.editBtn, .deleteBtn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  border: 1px solid transparent;
+}
+
+.editBtn {
+  background: var(--c-surface);
+  border-color: #0d6c3d;
+  color: #0d6c3d;
+}
+.editBtn:hover { background: #0d6c3d; color: #fff; }
+
+.deleteBtn {
+  background: var(--c-surface);
+  border-color: var(--c-danger);
+  color: var(--c-danger);
+}
+.deleteBtn:hover { background: #b3261e; color: #fff; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.offersSection {
+  background: var(--c-surface-alt);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.offersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.offersEmpty {
+  text-align: center;
+  color: #999;
+  font-size: 0.85rem;
+  padding: 12px 0;
+  margin: 0;
+}
+
+.offerForm {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.offerFormHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.offerFormTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0d6c3d;
+}
+
+.removeOffer {
+  background: none;
+  border: none;
+  color: var(--c-danger);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.removeOffer:hover { text-decoration: underline; }
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .row2, .row3 { grid-template-columns: 1fr; }
+}

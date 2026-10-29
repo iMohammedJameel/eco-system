@@ -1,0 +1,75 @@
+/* ═══ حقل إدخال موحّد لكل صفحات المصادقة ═══
+   نفس قيم .label / .field / .error من صفحات المصادقة المعتمدة. */
+
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #264649;
+  margin: 12px 0 6px;
+}
+/* بديل صريح لـ .label:first-of-type — أول حقل في النموذج بلا هامش علوي */
+.first {
+  margin-top: 0;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fbf9f5;
+  border: 1.6px solid #e3e6df;
+  border-radius: 12px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.field:focus-within {
+  border-color: #166d37;
+  box-shadow: 0 0 0 3px rgba(22, 109, 55, 0.13);
+}
+.fieldError {
+  border-color: #c0392b !important;
+  background: #fdf5f4;
+}
+.fieldIcon {
+  color: #7d968f;
+  margin-inline-start: 13px;
+  flex-shrink: 0;
+}
+.field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 12.5px 14px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: #14332f;
+  min-width: 0;
+}
+.field input::placeholder {
+  color: #a4b5af;
+}
+
+/* زر إظهار/إخفاء كلمة المرور (من صفحة التسجيل) */
+.eyeBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #7d968f;
+  padding: 0 13px 0 10px;
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  min-height: 28px; /* هدف لمس مريح — كان 18px (أقل من حد 24px) على الموبايل */
+}
+.eyeBtn:hover {
+  color: #166d37;
+}
+
+.error {
+  display: block;
+  color: #c0392b;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 5px 2px 0;
+}

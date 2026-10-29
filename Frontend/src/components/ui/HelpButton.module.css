@@ -1,0 +1,110 @@
+/* HelpButton — زر المساعدة العائم + popover
+   أسفل-يمين فيزيائي في اللغتين (بعيد عن السايدبار المثبّت شمال — نفس منطق الـ Toast).
+   الـ popover بيرث dir الصفحة (rtl/ltr) فبيتراص صح في اللغتين. */
+
+.wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px; /* يمين فيزيائي — مش inset-inline — عشان يفضل بعيد عن السايدبار الشمالي في العربي والإنجليزي */
+  z-index: 60; /* فوق المحتوى، تحت الـ modals (1000) والـ toast (9999) */
+}
+
+.btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-full);
+  background: var(--c-primary-dark);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--sh-md);
+  opacity: 0.88;
+  transition: opacity var(--t-fast), transform var(--t-fast), background var(--t-fast);
+}
+
+.btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: var(--c-primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 3px;
+}
+
+.btnActive {
+  opacity: 1;
+  background: var(--c-primary);
+  transform: translateY(-2px);
+}
+
+.popover {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  inset-inline-end: 0; /* يرتكز على حافة الزر المنطقية فتنفتح للداخل في RTL/LTR */
+  width: min(340px, calc(100vw - 48px));
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+  padding: 16px 18px 15px;
+  animation: ecFadeInUp var(--t-fast) both;
+}
+
+.popover::after {
+  /* سهم صغير ناحية الزر */
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  inset-inline-end: 15px;
+  width: 10px;
+  height: 10px;
+  background: var(--c-surface);
+  border-inline-end: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  transform: rotate(45deg);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  color: var(--c-text-muted);
+  transition: all var(--t-fast);
+}
+
+.closeBtn:hover {
+  background: var(--c-surface-alt);
+  color: var(--c-text);
+}
+
+.popoverTitle {
+  font-size: 0.9rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-primary-dark);
+  margin: 0 26px 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popoverBody {
+  font-size: 0.82rem;
+  line-height: var(--lh-relaxed);
+  color: var(--c-text-secondary);
+  margin: 0;
+}
+
+/* موبايل: الزر أصغر شوية وملاصق للبحر */
+@media (max-width: 640px) {
+  .wrap { bottom: 16px; right: 16px; }
+  .btn { width: 38px; height: 38px; }
+  .popover { width: min(300px, calc(100vw - 32px)); }
+}

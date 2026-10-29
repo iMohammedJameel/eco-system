@@ -1,0 +1,89 @@
+/* StatsCard — زي الديزاين: بلا إطار + ظل همس، شريحة أيقونة نعناعية يسار، label يمين، رقم كبير، حبة اتجاه
+   الإصلاح: حبة الاتجاه صارت عنصرًا داخل التدفق (margin-top: auto) بدل position: absolute
+   حتى يستحيل تصادمها مع الرقم الطويل (كان بيحصل مع قيم زي "1,827.09 EGP"). */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 140px;
+  padding: 16px 18px 14px;
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-md);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  /* زي الديزاين العربي: label يمين (بداية القراءة) + شريحة الأيقونة شمال —
+     row-reverse بيحقق ده في الاتجاهين (label دايمًا في بداية القراءة والأيقونة في نهايتها) */
+  flex-direction: row-reverse;
+}
+
+/* الشريحة النعناعية — يسار (زي الديزاين) */
+.icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-md);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text-secondary);
+  text-align: start;
+}
+
+.value {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--c-text);
+  text-align: start;
+  letter-spacing: -0.01em;
+  direction: ltr;
+  /* الرقم + العملة في سطر واحد دايمًا — overflow-wrap:anywhere كان بيسمح بكسر
+     الرقم نفسه ("1,920." / "68") على الكاردات الضيقة، فبيبان الرقم مقطوع
+     وحبة الاتجاه ملاصقة فيه (طلب المستخدم: "هذا الشهر مغطي على الرقم") */
+  white-space: nowrap;
+}
+
+/* حبة الاتجاه — أسفل الكارت في التدفق (تلتصق بالقاع عبر margin-top: auto) */
+.trend {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  font-size: 0.68rem;
+  font-weight: var(--fw-bold);
+}
+
+/* في RTL: نثبتها على اليسار الفعلي زي الديزاين (flex-end في RTL = يسار) */
+:global([dir='rtl']) .trend {
+  align-self: flex-end;
+}
+
+.trendDown {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+}

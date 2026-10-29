@@ -1,0 +1,32 @@
+.statsRow {
+  /* flex بدل grid: أي كرت يتيم في آخر صف (عدد فردي / 5 كروت على تابلت)
+     يتمدد لعرض الصف كامل تلقائيًا — متوازن على كل المقاسات بدون breakpoints.
+     (كان grid auto-fit والكرت الخامس بيقعد يتيم ناقص الشكل على الموبايل/التابلت) */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  /* إيقاع 18px الموحّد (زي الداشبورد والماكينات) — قبل كده الكروت كانت
+     ملاصقة للهيدر اللي فوقها ولفلاتر اللي تحتها (فرق 0px مُقاس) */
+  margin: 18px 0;
+}
+
+.statCard {
+  flex: 1 1 160px;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.statLabel {
+  font-size: 0.82rem;
+  color: #555;
+}

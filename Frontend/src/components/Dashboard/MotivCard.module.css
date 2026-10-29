@@ -1,0 +1,52 @@
+.card {
+  position: relative;
+  padding: 20px;
+  background: linear-gradient(160deg, #f0f9f0 0%, #dcf0dc 100%);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-card);
+  overflow: hidden;
+}
+
+.leaves {
+  position: absolute;
+  left: -14px;
+  bottom: -16px;
+  width: 120px;
+  height: 110px;
+  transform: rotate(8deg);
+  opacity: 0.95;
+}
+
+.leaf1 {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+}
+
+.leaf2 {
+  position: absolute;
+  bottom: 22px;
+  left: 42px;
+  width: 62px;
+  height: 62px;
+  transform: rotate(-18deg);
+}
+
+.content {
+  position: relative;
+  max-width: 78%;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: var(--fw-extrabold);
+  color: var(--c-primary-dark);
+}
+
+.desc {
+  margin-top: 6px;
+  font-size: 0.76rem;
+  font-weight: var(--fw-medium);
+  color: #3c5a4a;
+  line-height: 1.6;
+}

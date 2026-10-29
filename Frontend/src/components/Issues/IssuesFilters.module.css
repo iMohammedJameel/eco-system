@@ -1,0 +1,23 @@
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  /* مسافة تنفّس قبل قائمة الكروت — نفس إيقاع 18px الموحّد
+     (قبل كده أول كارت كان ملاصق للفلاتر بفرق 0px) */
+  margin-bottom: 18px;
+}
+
+.select {
+  padding: 11px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  background: var(--c-surface);
+  font-size: 0.88rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 150px;
+  font-family: inherit;
+}
+
+.select:focus { border-color: #0d6c3d; }

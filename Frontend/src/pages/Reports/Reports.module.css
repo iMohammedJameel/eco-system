@@ -1,0 +1,40 @@
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.headerRight {
+  text-align: start;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 0.88rem;
+  color: #888;
+  margin: 4px 0 0;
+}
+
+.exportBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chartsRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 16px;
+  /* مسافة قبل كارت التفاصيل الشهرية — إيقاع 18px الموحّد (كان ملاصق بفرق 0px) */
+  margin-bottom: 18px;
+}
+
+@media (max-width: 1100px) {
+  .chartsRow { grid-template-columns: minmax(0, 1fr); }
+}

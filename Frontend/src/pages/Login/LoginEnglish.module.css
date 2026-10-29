@@ -1,0 +1,724 @@
+/* ═══════════════════════════════════════════════════════════════════
+   LoginEnglish — the approved design, English edition.
+   Same pixel-perfect overlay architecture as Login.module.css:
+   the page background / card / fields / buttons are exact crops of
+   the design artwork (1536×1024) with the baked Arabic text removed;
+   English texts are HTML layers locked to the same design coordinates.
+   1 design px = 0.0651vw (x) / 0.0977vh (y).
+   ═══════════════════════════════════════════════════════════════════ */
+
+.page {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #f9f6f1;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* full-bleed design artwork, stretched with the viewport */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* ── hero texts layer (left side of the design) ── */
+.heroLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroHeading {
+  position: absolute;
+  margin: 0;
+  font-size: 2.95vh;
+  font-weight: 800;
+  line-height: 1.42;
+  color: #2e5446;
+  letter-spacing: -0.01em;
+}
+
+.heroParagraph {
+  position: absolute;
+  margin: 0;
+  font-size: 1.62vh;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #61796d;
+}
+
+.heroFeatures {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.heroFeatures li {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.35vh;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #3e5247;
+  white-space: nowrap;
+}
+
+.heroFooter {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.35vh;
+  font-weight: 600;
+  color: rgba(233, 244, 236, 0.88);
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* ── language selector (cleaned crop + HTML «English») ── */
+.langBtn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.langBtn img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.langBtn:hover {
+  opacity: 0.75;
+}
+/* «العربية» was baked at x 42-108 / y 0-30 of the 208×58 crop */
+.langText {
+  position: absolute;
+  left: 20.5%;
+  top: 4%;
+  height: 52%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5vh;
+  font-weight: 700;
+  color: #0f5132;
+  white-space: nowrap;
+}
+
+/* the form card artwork */
+.card {
+  position: absolute;
+  pointer-events: none;
+}
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* interactive layer */
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── card heading texts ── */
+.tagline {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.32vh;
+  font-weight: 600;
+  color: #8a9691;
+}
+
+.heading {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2.55vh;
+  font-weight: 800;
+  color: #2b5644;
+}
+
+.subtitle {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5vh;
+  font-weight: 600;
+  color: #9aa5a1;
+}
+
+/* ── input fields (cleaned crops — envelope/lock/eye icons kept) ── */
+.fieldBox {
+  position: absolute;
+  pointer-events: none;
+  transition: box-shadow 0.15s ease;
+  border-radius: 0.65vw;
+}
+.fieldBox img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* focus ring */
+#emailField:has(~ #en-login-email:focus),
+#passField:has(~ #en-login-password:focus) {
+  box-shadow: 0 0 0 0.13vw #0f6a3a, 0 0 0 0.33vw rgba(15, 106, 58, 0.16);
+}
+
+/* error ring */
+.fieldError {
+  box-shadow: 0 0 0 0.13vw #e53935 !important;
+}
+
+/* floating label inside the field (where the Arabic one was baked) */
+.floatLabel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  font-size: 1.35vh;
+  font-weight: 700;
+  color: #5f6f68;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.input {
+  position: absolute;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  color: #23323c;
+  z-index: 4;
+}
+.input:focus-visible {
+  outline: none;
+}
+.input::placeholder {
+  color: #9aa7a2;
+}
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 60vw #fbf9f5 inset;
+  -webkit-text-fill-color: #23323c;
+}
+
+/* ── field icons: crisp SVG over baked artwork ──
+   الرقعة بلون خلفية الحقل (مقاسة: rgb(251,248,243)) تُخفي الأيقونة
+   المخبوزة الضبابية، والأيقونة SVG فوقها حادة على أي مقاس شاشة. */
+.fieldIconPatch {
+  position: absolute;
+  background: #fbf8f3;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── eye toggle (crisp lucide icon always visible) ── */
+.eyeBtn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eyePatch {
+  position: absolute;
+  inset: 0;
+  background: #faf8f4;
+}
+.eyeIcon {
+  position: relative;
+  width: 1.69vw;
+  height: 1.69vw;
+  color: #33565a;
+}
+@media (max-aspect-ratio: 3/2) {
+  .eyeIcon { width: 2.5vh; height: 2.5vh; }
+}
+
+/* ── remember me (left) + forgot (right) ── */
+.rememberZone {
+  position: absolute;
+  cursor: pointer;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+}
+.rememberText {
+  /* بعد الشيكبوكس المخبوز [894-928] بـ 8px فاصل */
+  margin-left: 4.4vh;
+  font-size: 1.5vh;
+  font-weight: 600;
+  color: #3d4a44;
+  white-space: nowrap;
+}
+/* covers the baked checked-checkbox when the user unchecks it */
+.checkboxCover {
+  position: absolute;
+  pointer-events: none;
+  background: #fcfaf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.unchecked {
+  display: block;
+  width: 82.4%;
+  height: 71.1%;
+  background: #fcfaf6;
+  border: 0.13vw solid #264649;
+  border-radius: 0.26vw;
+  box-sizing: border-box;
+}
+.hiddenCheck {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.forgotLink {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.5vh;
+  font-weight: 700;
+  color: #166d37;
+  text-decoration: none;
+}
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+/* ── submit button (cleaned green pill + HTML label) ── */
+.submitBtn {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 0.72vw;
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+.btnArt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+.submitBtn:hover:not(:disabled) {
+  filter: brightness(1.07);
+}
+.submitBtn:active:not(:disabled) {
+  transform: translateY(0.06vw);
+}
+.submitBtn:disabled {
+  cursor: default;
+}
+.btnText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9vh;
+  color: #ffffff;
+  font-size: 1.9vh;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.loadingPatch {
+  position: absolute;
+  inset: 0;
+  background: #0d683c;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── «or» divider word (lines are baked in the card art) ── */
+.orText {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vh;
+  font-weight: 600;
+  color: #8f9a95;
+}
+
+/* ── google button (fully cleaned crop — G SVG + label as centered group) ── */
+.googleBtn {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 0.72vw;
+  transition: filter 0.15s ease;
+}
+.googleBtn:hover {
+  filter: brightness(0.985);
+}
+.googleText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  font-size: 1.8vh;
+  font-weight: 700;
+  color: #3c4a44;
+}
+
+/* ── card footer ── */
+.cardFooter {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 1.5vh;
+  font-weight: 600;
+  color: #7d8a84;
+}
+.footerLink {
+  color: #166d37;
+  font-weight: 800;
+  text-decoration: none;
+}
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+/* ── validation messages ── */
+.errorMsg {
+  position: absolute;
+  z-index: 6;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 0.72vw;
+  font-weight: 700;
+  color: #e53935;
+  text-align: start;
+  direction: ltr;
+  display: flex;
+  align-items: center;
+}
+
+/* ── spinner ── */
+.spinner {
+  display: inline-block;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: en-spin 0.7s linear infinite;
+}
+@keyframes en-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE (EN) (≤ 900px) — flow layout from the same design assets
+   ═══════════════════════════════════════════════════════════════════ */
+.mPage {
+  min-height: 100vh;
+  background: #f9f6f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+
+.mLangBtn {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  padding: 7px 14px;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  background: var(--c-surface);
+  color: #0d6c3d;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.mLangBtn:hover {
+  background: var(--c-primary-bg-soft);
+  border-color: #c9d8cd;
+}
+
+.mCard {
+  width: 100%;
+  max-width: 430px;
+  background: #fcfaf6;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(6, 54, 36, 0.1);
+}
+.mCardTop,
+.mCardBottom {
+  display: block;
+  width: 100%;
+}
+
+/* heading texts (HTML — the Arabic ones were baked in cardTop) */
+.mHead {
+  padding: 6px 24px 0;
+  text-align: center;
+}
+.mHeading {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  color: #2b5644;
+}
+.mSubtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9aa5a1;
+}
+
+.mForm {
+  padding: 16px 22px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.mField {
+  display: flex;
+  align-items: center;
+  direction: ltr;
+  background: #fbf9f5;
+  border: 1.5px solid #e7e7e3;
+  border-radius: 12px;
+  height: 56px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+.mField:focus-within {
+  border-color: #0f6a3a;
+}
+.mFieldError {
+  border-color: #e53935;
+}
+.mField input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  font-size: 15px;
+  color: #23323c;
+  min-width: 0;
+}
+.mField input::placeholder {
+  color: #9aa7a2;
+}
+.mIcon {
+  width: 22px;
+  height: auto;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.mEye {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #264649;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.mEye img {
+  width: 22px;
+  height: auto;
+}
+.mError {
+  color: #e53935;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-top: -7px;
+  text-align: start;
+}
+
+.mRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mRemember {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.mRememberText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3d4a44;
+}
+.mChecked,
+.mUnchecked {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.mUnchecked {
+  border: 1.7px solid #264649;
+  border-radius: 6px;
+  background: #fbf9f5;
+  box-sizing: border-box;
+}
+.mForgot {
+  font-size: 13px;
+  font-weight: 700;
+  color: #166d37;
+  text-decoration: none;
+}
+.mForgot:hover {
+  text-decoration: underline;
+}
+
+.mSubmit {
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #166d37 0%, #0e6a3a 30%, #0d683c 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.mSubmit:disabled {
+  opacity: 0.88;
+  cursor: default;
+}
+.mSpinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: en-spin 0.7s linear infinite;
+}
+
+.mDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 2px 6px;
+}
+.mDividerLine {
+  flex: 1;
+  height: 1.5px;
+  background: #e7e9e4;
+  border-radius: 999px;
+}
+.mDividerText {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8f9a95;
+}
+
+.mGoogle {
+  height: 52px;
+  background: #fcfcfc;
+  border: 1.5px solid #e5e6e3;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #3c4a44;
+}
+.mGoogle:hover {
+  background: #f7f8f6;
+}
+
+.mCreate {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: #166d37;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.1px;
+}
+.mCreate:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .mSpinner {
+    animation-duration: 1.4s;
+  }
+  .submitBtn,
+  .googleBtn,
+  .fieldBox {
+    transition: none;
+  }
+}

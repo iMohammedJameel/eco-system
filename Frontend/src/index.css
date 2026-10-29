@@ -1,0 +1,426 @@
+/* =========================================================================
+   EcoCycle Admin — index.css
+   Global styles: reset + design tokens + utilities (animations, a11y, scrollbars)
+   Tokens مشتقة من ملف الديزاين المعتمد (لوحة النعناع + الأخضر الغامق)
+   ========================================================================= */
+
+/* ===== Design Tokens ===== */
+:root {
+  /* ===== Color Palette ===== */
+  /* Brand — من الديزاين */
+  --c-primary:           #0d6c3d;
+  --c-primary-hover:     #0b5c33;
+  --c-primary-dark:      #043722;
+  --c-primary-deep:      #074e29;
+  --c-primary-light:     #5f9d78;
+  --c-primary-lime:      #79c032;
+  --c-primary-lime-soft: #77c04d;
+  --c-primary-bg:        #dcf0dc;
+  --c-primary-bg-soft:   #f0f9f0;
+
+  /* Semantic — سلم أخضر من 4 مستويات (من الديزاين) */
+  --c-success:           #0e6a3a;
+  --c-success-bg:        #dcf0dc;
+  --c-warning:           #a06a10;
+  --c-warning-bg:        #f4efe2;
+  --c-danger:            #b3261e;
+  --c-danger-bg:         #f9e8e6;
+  --c-danger-hover:      #92231d;
+  --c-info:              #0d6c3d;
+  --c-info-bg:           #dcf0dc;
+
+  /* Neutrals — النعناع */
+  --c-bg:                #f4f9f5;
+  --c-surface:           #ffffff;
+  --c-surface-alt:       #f0f4f3;
+  --c-surface-hover:     #e9f0ea;
+  --c-border:            #e3ece5;
+  --c-border-strong:     #c9d8cd;
+  --c-divider:           #ecf2ed;
+
+  /* Text */
+  --c-text:              #1b2a22;
+  --c-text-secondary:    #5b6b62;
+  --c-text-muted:        #8a9990;
+  --c-text-disabled:     #b8c4bc;
+  --c-text-on-primary:   #ffffff;
+
+  /* Sidebar (من الديزاين: تدرج عمودي) */
+  --sidebar-bg-from:     #074e29;
+  --sidebar-bg-to:       #033722;
+  --sidebar-pill:        #0d6c3d;
+  --sidebar-text:        #cfe0d4;
+  --sidebar-text-active: #ffffff;
+  --sidebar-badge:       #7cc548;
+
+  /* ===== Typography ===== */
+  --font-base:           'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  --font-mono:           'JetBrains Mono', ui-monospace, Menlo, Monaco, monospace;
+
+  --fs-xs:   0.72rem;
+  --fs-sm:   0.82rem;
+  --fs-md:   0.9rem;
+  --fs-base: 0.95rem;
+  --fs-lg:   1.05rem;
+  --fs-xl:   1.25rem;
+  --fs-2xl:  1.6rem;
+  --fs-3xl:  2rem;
+
+  --fw-normal:   400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-extrabold:800;
+
+  --lh-tight:   1.2;
+  --lh-snug:    1.4;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.65;
+
+  /* ===== Spacing ===== */
+  --sp-0:   0;
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   20px;
+  --sp-6:   24px;
+  --sp-8:   32px;
+  --sp-10:  40px;
+  --sp-12:  48px;
+  --sp-16:  64px;
+
+  /* ===== Radii (مقاسة من الديزاين) ===== */
+  --r-sm:   8px;
+  --r-md:   11px;
+  --r-lg:   12px;
+  --r-xl:   16px;
+  --r-2xl:  20px;
+  --r-full: 9999px;
+
+  /* ===== Shadows — همس أخضر ناعم ===== */
+  --sh-xs:   0 1px 2px rgba(6, 54, 36, 0.05);
+  --sh-sm:   0 2px 8px rgba(6, 54, 36, 0.06);
+  --sh-md:   0 6px 18px rgba(6, 54, 36, 0.08);
+  --sh-card: 0 8px 28px rgba(6, 54, 36, 0.07);
+  --sh-lg:   0 12px 36px rgba(6, 54, 36, 0.12);
+  --sh-xl:   0 16px 48px rgba(6, 54, 36, 0.18);
+  --sh-focus: 0 0 0 3px rgba(13, 108, 61, 0.18);
+
+  /* ===== Transitions ===== */
+  --t-fast:    150ms ease;
+  --t-normal:  220ms ease;
+  --t-slow:    350ms ease;
+  --t-bounce:  350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ===== Layout (من الديزاين: sidebar 272 / topbar 76) ===== */
+  --sidebar-w:           272px;
+  --sidebar-collapsed-w: 72px;
+  --navbar-h:            76px;
+  --content-max-w:       1600px;
+  --widgets-col-w:       296px;
+
+  /* ===== Z-index scale ===== */
+  --z-base:      1;
+  --z-sticky:    50;
+  --z-navbar:    90;   /* أقل من overlay السايدبار (99) حتى يغطيه الدرج في الموبايل */
+  --z-sidebar:   100;
+  --z-dropdown:  500;
+  --z-modal:     1000;
+  --z-toast:     9999;
+}
+
+/* ===== Dark Mode — قلب التوكنات فقط =====
+   كل الـ CSS Modules بتستهلك var(--c-*) فالتبديل هنا يمسك الواجهة كلها.
+   السايدبار يفضل غامق (هو أصلًا غامق في النهاري) مع تعديل بسيط. */
+[data-theme='dark'] {
+  /* Brand — نفس الهوية مع إشراقة أقل على الخلفية الغامقة */
+  --c-primary:           #2e9e63;
+  --c-primary-hover:     #278a55;
+  --c-primary-dark:      #9fd8b6;
+  --c-primary-deep:      #0a3d23;
+  --c-primary-light:     #4f8a68;
+  --c-primary-lime:      #8ed14e;
+  --c-primary-lime-soft: #6da33d;
+  --c-primary-bg:        #12331f;
+  --c-primary-bg-soft:   #0e2a19;
+
+  /* Semantic */
+  --c-success:           #35a86a;
+  --c-success-bg:        #12331f;
+  --c-warning:           #d9a23f;
+  --c-warning-bg:        #33290f;
+  --c-danger:            #e57368;
+  --c-danger-bg:         #3a1714;
+  --c-danger-hover:      #cf5a4e;
+  --c-info:              #2e9e63;
+  --c-info-bg:           #12331f;
+
+  /* Neutrals — خلفيات غامقة بميل أخضر */
+  --c-bg:                #0b1a12;
+  --c-surface:           #10221a;
+  --c-surface-alt:       #152a20;
+  --c-surface-hover:     #1b3427;
+  --c-border:            #22392d;
+  --c-border-strong:     #34503f;
+  --c-divider:           #1a2f24;
+
+  /* Text */
+  --c-text:              #e6efe9;
+  --c-text-secondary:    #a7bcb0;
+  --c-text-muted:        #79917f;
+  --c-text-disabled:     #4c6154;
+  --c-text-on-primary:   #ffffff;
+
+  /* Sidebar — يبقى غامق مع لمسة أعمق للتوافق */
+  --sidebar-bg-from:     #062816;
+  --sidebar-bg-to:       #031a0f;
+  --sidebar-pill:        #0f4d2b;
+  --sidebar-text:        #b6d2c1;
+  --sidebar-text-active: #ffffff;
+  --sidebar-badge:       #8ed14e;
+
+  /* Shadows — أعمق وأوضح على الغامق */
+  --sh-xs:   0 1px 2px rgba(0, 0, 0, 0.4);
+  --sh-sm:   0 2px 8px rgba(0, 0, 0, 0.45);
+  --sh-md:   0 6px 18px rgba(0, 0, 0, 0.5);
+  --sh-card: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --sh-lg:   0 12px 36px rgba(0, 0, 0, 0.55);
+  --sh-xl:   0 16px 48px rgba(0, 0, 0, 0.6);
+  --sh-focus: 0 0 0 3px rgba(46, 158, 99, 0.35);
+}
+
+/* ===== CSS Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: var(--font-base);
+  font-size: 16px;
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--c-text);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--c-bg);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* ===== Animations ===== */
+@keyframes ecFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ecFadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ecFadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ecScaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ecShimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes ecSlideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ecPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.6; }
+}
+
+/* ===== Animation utility classes ===== */
+.ec-fade-in      { animation: ecFadeIn var(--t-normal) both; }
+.ec-fade-in-up   { animation: ecFadeInUp var(--t-normal) both; }
+.ec-fade-in-down { animation: ecFadeInDown var(--t-normal) both; }
+.ec-scale-in     { animation: ecScaleIn var(--t-normal) both; }
+.ec-slide-in     { animation: ecSlideInRight var(--t-normal) both; }
+
+/* Stagger helpers */
+.ec-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.ec-stagger > *:nth-child(2) { animation-delay: 60ms; }
+.ec-stagger > *:nth-child(3) { animation-delay: 120ms; }
+.ec-stagger > *:nth-child(4) { animation-delay: 180ms; }
+.ec-stagger > *:nth-child(5) { animation-delay: 240ms; }
+.ec-stagger > *:nth-child(6) { animation-delay: 300ms; }
+.ec-stagger > *:nth-child(7) { animation-delay: 360ms; }
+.ec-stagger > *:nth-child(8) { animation-delay: 420ms; }
+.ec-stagger > *:nth-child(n+9) { animation-delay: 480ms; }
+
+/* ===== Focus rings (accessibility) ===== */
+.ec-focus-ring:focus,
+.ec-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+  border-radius: var(--r-md);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+}
+
+/* ===== Custom scrollbar ===== */
+.ec-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ec-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ec-scroll::-webkit-scrollbar-thumb {
+  background: var(--c-border-strong);
+  border-radius: var(--r-full);
+}
+
+.ec-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--c-text-muted);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-surface-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-border-strong);
+  border-radius: var(--r-full);
+  border: 2px solid var(--c-surface-alt);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-text-muted);
+}
+
+/* ===== Screen reader only (a11y) ===== */
+.ec-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Skip to content link (a11y) ===== */
+.ec-skip-link {
+  position: absolute;
+  top: -40px;
+  inset-inline-start: 0;
+  background: var(--c-primary);
+  color: var(--c-text-on-primary);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-md);
+  z-index: var(--z-toast);
+  text-decoration: none;
+  transition: top var(--t-fast);
+}
+
+.ec-skip-link:focus {
+  top: var(--sp-2);
+}
+
+/* ===== Reduced motion (a11y) ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Leaflet fixes (خريطة حقيقية) ===== */
+.leaflet-container {
+  font-family: var(--font-base);
+  direction: ltr;
+}
+
+.ecocycle-pin {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #fff;
+  box-shadow: 0 3px 8px rgba(6, 54, 36, 0.35);
+}
+
+.ecocycle-pin svg {
+  transform: rotate(45deg);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+
+  text-align: start;
+}
+
+.leaflet-popup-content {
+  font-family: var(--font-base);
+  margin: 10px 14px;
+}

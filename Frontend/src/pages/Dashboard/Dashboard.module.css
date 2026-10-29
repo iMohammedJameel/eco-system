@@ -1,0 +1,79 @@
+/* شبكة الداشبورد — زي الديزاين: عمود رئيسي + عمود ودجت 296px على اليسار الفعلي */
+
+.grid {
+  display: grid;
+  /* minmax(0,…) يمنع محتوى غير قابل للكسر (nowrap) من توسيع المسار على الموبايل */
+  grid-template-columns: minmax(0, 1fr) var(--widgets-col-w);
+  gap: 20px;
+  align-items: start;
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.widgetsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  position: sticky;
+  top: calc(var(--navbar-h) + 20px);
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.chartsRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.bottomRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 1360px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .widgetsCol {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* كاردات الإحصائيات 2×2 على الشاشات ≤1600 — في صف رباعي كان عرض الكارد
+   بينزل لـ ~169px (لابتوب 1366) فالقيم المالية ("1,920.68 ج.م") كانت بتتكسر
+   لسطرين وحبة الاتجاه بتلزق في الرقم؛ بزوجة أعرض القيمة تفضل سطر واحد مريح */
+@media (max-width: 1600px) {
+  .statsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .chartsRow,
+  .bottomRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .widgetsCol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .statsRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,57 @@
+.pageHeader {
+  text-align: start;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.pageSubtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 4px 0 0;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--c-surface);
+  border-radius: 12px;
+  box-shadow: var(--sh-card);
+  /* مسافة قبل الجدول اللي تحتها — إيقاع 18px الموحّد (كانت ملاصقة بفرق 0px) */
+  margin-bottom: 18px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  padding-inline-start: 44px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: 16px;
+  color: #aaa;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}

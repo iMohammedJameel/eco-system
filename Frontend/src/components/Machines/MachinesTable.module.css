@@ -1,0 +1,185 @@
+.wrapper {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-card);
+  /* سكرول أفقي للجدول العريض على الموبايل — قبل كده كان hidden فكان بيقص الأعمدة ديالًا
+     (جدول 766px على شاشة 375px). نفس نمط Transactions */
+  overflow-x: auto;
+}
+
+/* row-reverse اتشال — كان بيقلب العناصر غلط في العربي والإنجليزي؛ row العادي بيتبع dir تلقائيًا */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  text-align: start;
+}
+
+.table thead tr {
+  background: var(--c-surface-alt);
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  /* مطابقة محاذاة الخلايا — المتصفح بيمركز th افتراضيًا فكان العنوان مش واقف على محتوى عموده */
+  text-align: start;
+}
+
+.table td {
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  color: #333;
+  border-bottom: 1px solid #f0f4f3;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--c-surface-alt);
+}
+
+.machineName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  /* سطر واحد + ellipsis — الأسماء الطويلة كانت بتلف 4-6 سطور فترفع الصف
+     لـ 113px وتكسر اتساق الجدول (نفس إصلاح Transactions). الاسم الكامل في tooltip. */
+  max-width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location {
+  color: #666;
+  font-size: 0.85rem;
+  max-width: 160px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.statusActive {
+  background: var(--c-primary-bg);
+  color: #0d6c3d;
+}
+
+.statusWarning {
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+}
+
+.statusOffline {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+}
+
+.fillCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.barBg {
+  width: 80px;
+  height: 6px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.fillPct {
+  font-size: 0.82rem;
+  color: #555;
+  min-width: 32px;
+}
+
+.dash {
+  color: #bbb;
+}
+
+.lastSend {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.actionBtn {
+  padding: 6px 14px;
+  border: 1px solid #0d6c3d;
+  background: none;
+  color: #0d6c3d;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: #0d6c3d;
+  color: #fff;
+}
+
+.actionsCell {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.editBtn {
+  padding: 5px 12px;
+  border: 1px solid #0d6c3d;
+  background: var(--c-surface);
+  color: #0d6c3d;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.editBtn:hover {
+  background: #0d6c3d;
+  color: #fff;
+}
+
+.deleteBtn {
+  padding: 5px 12px;
+  border: 1px solid #b3261e;
+  background: var(--c-surface);
+  color: var(--c-danger);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.deleteBtn:hover {
+  background: #b3261e;
+  color: #fff;
+}

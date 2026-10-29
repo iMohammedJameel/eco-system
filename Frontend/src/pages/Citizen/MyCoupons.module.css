@@ -1,0 +1,139 @@
+/* كوبوناتي */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--sp-5);
+}
+
+.card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+  animation: ecFadeInUp var(--t-normal) both;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-card);
+}
+
+/* الحالات — الكروت المنتهية/المستبدلة باهتة */
+.card.stActive { border-inline-start: 4px solid var(--c-success); }
+.card.stRedeemed,
+.card.stExpired,
+.card.stCancelled {
+  opacity: 0.62;
+  border-inline-start: 4px solid var(--c-border-strong);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.partner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.partnerIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-lg);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.partnerName {
+  display: block;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+.partnerCat {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+.statusChip {
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+
+.statusChip.stActive { background: var(--c-success-bg); color: var(--c-success); }
+.statusChip.stRedeemed { background: var(--c-primary-bg); color: var(--c-primary); }
+.statusChip.stExpired { background: var(--c-warning-bg); color: var(--c-warning); }
+.statusChip.stCancelled { background: var(--c-danger-bg); color: var(--c-danger); }
+
+.offerBox {
+  background: var(--c-surface-alt);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.offerTitle {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+}
+
+.offerValue {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--c-primary-dark);
+}
+
+.offerValue small {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-normal);
+  color: var(--c-text-muted);
+}
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  color: var(--c-primary);
+  background: var(--c-primary-bg-soft);
+  border: 1px dashed var(--c-primary-light);
+  border-radius: var(--r-md);
+  padding: var(--sp-2) var(--sp-4);
+}
+
+.expires {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}

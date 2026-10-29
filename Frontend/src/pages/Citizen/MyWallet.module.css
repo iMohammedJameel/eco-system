@@ -1,0 +1,354 @@
+/* محفظة المواطن */
+
+.balanceHero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-6);
+  animation: ecFadeInUp var(--t-normal) both;
+}
+
+.balanceMain {
+  background: linear-gradient(135deg, var(--c-primary-deep), var(--c-primary));
+  border-radius: var(--r-2xl);
+  padding: var(--sp-8);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-3);
+  box-shadow: var(--sh-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.balanceMain::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: -40px;
+  top: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.balanceLabel {
+  font-size: var(--fs-sm);
+  opacity: 0.85;
+}
+
+.balanceValue {
+  font-size: 2.4rem;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: 0.01em;
+}
+
+.balanceValue small {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  opacity: 0.85;
+}
+
+.redeemLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-full);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  transition: background var(--t-fast);
+  z-index: 1;
+}
+
+.redeemLink:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ═══ المستوى ═══ */
+.levelCard {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-2xl);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.levelHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--c-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.levelName {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-primary-dark);
+}
+
+.levelBar {
+  height: 8px;
+  background: var(--c-surface-alt);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+
+.levelBar span {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-full);
+  background: linear-gradient(90deg, var(--c-primary-lime), var(--c-primary));
+  transition: width var(--t-slow);
+}
+
+.levelHint {
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+/* ═══ الإحصائيات ═══ */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+  animation: ecFadeInUp var(--t-normal) 60ms both;
+}
+
+.statCard {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-card);
+}
+
+.statIcon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-lg);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.statValue {
+  display: block;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+.statLabel {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+}
+
+/* ═══ العمودان ═══ */
+.twoCols {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--sp-5);
+  animation: ecFadeInUp var(--t-normal) 120ms both;
+}
+
+.panel {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--sp-5);
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-4);
+}
+
+.panelHead h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+}
+
+.panelHead a {
+  font-size: var(--fs-sm);
+  color: var(--c-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.panelHead a:hover {
+  text-decoration: underline;
+}
+
+.emptyMsg {
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  text-align: center;
+  padding: var(--sp-6) 0;
+}
+
+/* ═══ قائمة الحركات ═══ */
+.txList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.txItem {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) 0;
+  border-bottom: 1px solid var(--c-divider);
+}
+
+.txItem:last-child {
+  border-bottom: none;
+}
+
+.txIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-md);
+  flex-shrink: 0;
+}
+
+.txIn {
+  background: var(--c-success-bg);
+  color: var(--c-success);
+}
+
+.txOut {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+}
+
+.txInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.txTitle {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.txSub {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.txAmount {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══ المواد ═══ */
+.matList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.matItem {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.matIcon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-md);
+  flex-shrink: 0;
+}
+
+.matIcon.plastic { background: #e3f2fd; color: #1565c0; }
+.matIcon.glass { background: #e0f2f1; color: #00695c; }
+.matIcon.cardboard { background: #efebe9; color: #6d4c41; }
+.matIcon.paper { background: #f3e5f5; color: #6a1b9a; }
+
+[data-theme='dark'] .matIcon.plastic { background: #14273d; color: #64b5f6; }
+[data-theme='dark'] .matIcon.glass { background: #0f2b26; color: #4db6ac; }
+[data-theme='dark'] .matIcon.cardboard { background: #312925; color: #bcaaa4; }
+[data-theme='dark'] .matIcon.paper { background: #31183a; color: #ce93d8; }
+
+.matInfo {
+  flex: 1;
+}
+
+.matRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-1);
+  color: var(--c-text);
+}
+
+.matWeight {
+  color: var(--c-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.matBar {
+  height: 6px;
+  background: var(--c-surface-alt);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+
+.matBar span {
+  display: block;
+  height: 100%;
+  background: var(--c-primary);
+  border-radius: var(--r-full);
+}
+
+/* ═══ ريسبونسف ═══ */
+@media (max-width: 1024px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .twoCols { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .balanceHero { grid-template-columns: 1fr; }
+  .statsGrid { grid-template-columns: 1fr; }
+}

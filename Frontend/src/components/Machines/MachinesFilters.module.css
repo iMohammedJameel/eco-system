@@ -1,0 +1,65 @@
+/* مسافة تحت الفلاتر قبل الجدول — 18px زي كاردات الإحصائيات
+   (المسافة فوقها بتأتي من margin-bottom بتاع كاردات الإحصائيات) */
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap; /* موبايل: الفلاتر تنزل سطر جديد بدل ما تكسر الصفحة (كانت 414px على شاشة 375px) */
+  margin-bottom: 18px;
+}
+
+/* row-reverse اتشال — كان بيقلب العناصر غلط في العربي والإنجليزي؛ row العادي بيتبع dir تلقائيًا */
+
+.searchBox {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  padding-inline-start: 40px;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  background: var(--c-surface);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #0d6c3d;
+}
+
+.searchIcon {
+  position: absolute;
+  inset-inline-start: 12px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.select {
+  padding: 10px 14px;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  background: var(--c-surface);
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 160px;
+}
+
+/* ═══ موبايل: البحث ياخد سطر كامل والفلاتر تتقسم نص نص ═══ */
+@media (max-width: 640px) {
+  .searchBox {
+    flex: 1 1 100%;
+  }
+
+  .select {
+    flex: 1 1 calc(50% - 12px);
+    min-width: 0;
+    width: auto;
+  }
+}
